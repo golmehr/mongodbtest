@@ -67,6 +67,7 @@ feeController.editUser
   //add a new users
     app.route('/new/auth')
        .post(
+        authController.makeToken,
         authController.addUser
        );
   

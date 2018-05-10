@@ -1,3 +1,4 @@
+const md5=require('md5');
 const User=require('../model/authModel');
 
 
@@ -11,15 +12,27 @@ exports.find= async (req,res)=>{
 exports.addUser=(req,res)=>{
     new User({
         email:req.body.email,
-        password: req.body.password
-             }).save((err)=>{
+        password: req.body.password,
+        token: req.body.token
+             }).save((err,result)=>{
                  if(err) throw err;
                  res.json({
                      status:'success',
-                     message:'you have successfully added a new user!'
-                 })
+                     message:'you have successfully added a new user!',
+                     data:result   
+                    });
+                 return;
              })
    }  
+
+//maketoken 
+exports.makeToken=(req,res,next)=>{
+    const token=md5([req.body,Date.now()]);
+    req.body.token=token;
+    next();
+    return;
+}
+
 //update FEE
 exports.editUser=(req,res)=>{
     User.findOneAndUpdate({email:req.body.email},{password:req.body.password},(err,result)=>{

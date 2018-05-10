@@ -43,7 +43,7 @@ exports.addUser=(req,res)=>{
   }
 
 
-//search for  a student * when user has forgotten her password and send her email 
+// search for  a student * when user has forgotten her password and send her email 
 exports.findUser= async (req,res)=>{
   const user=await User.findOne({email: req.body.email});
 if(user){
