@@ -1,5 +1,6 @@
 const userController=require('./controller/userController');
 const feeController=require('./controller/feeController');
+const authController=require('./controller/authController');
 
 module.exports=(app)=>{
 
@@ -54,4 +55,25 @@ feeController.addUser
 feeController.editUser
      );
 
-  }
+
+
+  /////////auth table////////
+    //show all users
+    app.route('/find/all/auth')
+    .get(
+        authController.find
+    );
+  
+  //add a new users
+    app.route('/new/auth')
+       .post(
+        authController.addUser
+       );
+  
+  //update users
+       app.route('/edit/auth')
+       .post(
+        authController.editUser
+       );
+  
+    }

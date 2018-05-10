@@ -6,6 +6,10 @@ ObjectId = Schema.Types.ObjectId;
 
 //Student Model
 const studentSchema=new Schema({
+    authuser:{
+        type:Schema.Types.ObjectId,
+        ref:'auth'
+        },
     name : {
         type:String,
         required: true
@@ -61,7 +65,10 @@ const studentSchema=new Schema({
             //payment Info
 
             
-        FEE:[{type:Schema.Types.ObjectId,ref:'FEE'}],
+        FEE:{
+            type:Schema.Types.ObjectId,
+            ref:'FEE'
+            },
              //yes/NO
         paid:{
             type:String,
@@ -75,36 +82,7 @@ const studentSchema=new Schema({
         score:Number
     
              }]
-             /*register:[{
-           //which Term ? 97-1,97-2,...
-        term:{
-            type:String,
-            required: true
-            },
-         //which class ?Basic1,Basic2,...
-        class:{
-            type:String,
-            required:true
-             },
-            //payment Info
-
-            
-        FEEs:{type:ObjectId,ref:'FEE'},
-             //yes/NO
-        paid:{
-            type:String,
-            required: true
-            },
-             //yes/NO
-        book_buy:{
-            type:String,
-            required: true
-            },
-        score:Number
-    
-             }]*/
-
-
+         
 });
 
 //studentSchema.index({ "id_number": 1 },{ "unique": true, "background": false });
