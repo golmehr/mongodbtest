@@ -63,7 +63,6 @@ const studentSchema=new Schema({
             required:true
              },
             //payment Info
-
             
         FEE:{
             type:Schema.Types.ObjectId,
@@ -79,7 +78,7 @@ const studentSchema=new Schema({
             type:String,
             required: true
             },
-        score:Number
+        score:{type:Number}
     
              }]
          
