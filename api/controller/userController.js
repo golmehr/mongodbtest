@@ -12,34 +12,39 @@ res.json(user);
 
 //add a new Student(insert)
 exports.addUser=(req,res)=>{
-   new User({
-        name:req.body.name,
-        lname:req.body.lname,
-        id_number:req.body.id_number,
-        birth:req.body.birth,
-        address:req.body.address,
-        tel:req.body.tel,        
-        password: req.body.password,
-        email:req.body.email,
-        register:[{
-            term: req.body.term,
-            class: req.body.class,
+    console.log(req.body);
+   Fee.findById(req.body._id,(err,result)=>{
+    if(err) throw err;
 
-            //////////
-            FEE:req.body._id ,
-            
-            //////////
-            paid: req.body.paid,
-            book_buy: req.body.book_buy,
-            score: req.body.score
-        }]
-            }).save((err)=>{
-                if(err) throw err;
-                res.json({
-                    status:'success',
-                    message:'you have successfully signed up!'
-                })
-            })
+    new User({
+         name:req.body.name,
+         lname:req.body.lname,
+         id_number:req.body.id_number,
+         birth:req.body.birth,
+         address:req.body.address,
+         tel:req.body.tel,        
+         password: req.body.password,
+         email:req.body.email,
+         register:[{
+             term: req.body.term,
+             class: req.body.class,
+ 
+             //////////
+             FEE:result._id ,
+             
+             //////////
+             paid: req.body.paid,
+             book_buy: req.body.book_buy,
+             score: req.body.score
+         }]
+             }).save((err)=>{
+                 if(err) throw err;
+                 res.json({
+                     status:'success',
+                     message:'you have successfully signed up!'
+                 })
+             })
+   }) 
   }
 
 
