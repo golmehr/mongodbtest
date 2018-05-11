@@ -1,7 +1,6 @@
 const mongoose=require('mongoose');
 const Fee=require('./feeModel');
 const Schema=mongoose.Schema;
-ObjectId = Schema.Types.ObjectId;
 
 
 //Student Model
@@ -65,7 +64,7 @@ const studentSchema=new Schema({
             //payment Info
             
         FEE:{
-            type:Schema.Types.ObjectId,
+            type : Schema.Types.ObjectId,
             ref:'FEE'
             },
              //yes/NO

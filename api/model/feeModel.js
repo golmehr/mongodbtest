@@ -1,10 +1,6 @@
 const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 
-
-
-
-
 //FEE Model
 const feeSchema=new Schema({
     //Private,SemiPrivate,General,Children,...
@@ -20,7 +16,7 @@ const feeSchema=new Schema({
     }
 });
 
-module.exports=mongoose.model('FEE',feeSchema);
+module.exports = mongoose.model('FEE',feeSchema);
 
-const FEE=mongoose.model('FEE',feeSchema);
+// const FEE = mongoose.model('FEE',feeSchema);
 
