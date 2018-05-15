@@ -1,7 +1,6 @@
 const User=require('../model/userModel');
 const auth=require('../model/authModel');
 const register=require('../model/registerModel');
-
 //show all students(select *)
 exports.find= async (req,res)=>{
 const user=await User.find({});
