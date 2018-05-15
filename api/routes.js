@@ -1,6 +1,9 @@
 const userController=require('./controller/userController');
 const feeController=require('./controller/feeController');
 const authController=require('./controller/authController');
+const registerController=require('./controller/registerController');
+
+
 
 module.exports=(app)=>{
 
@@ -40,19 +43,19 @@ userController.editUser
   //show all FEE
   app.route('/find/all/fees')
   .get(
-      feeController.find
+      feeController.findFee
   );
 
 //add a new FEE
   app.route('/new/fee')
      .post(
-feeController.addUser
+feeController.addFee
      );
 
 //update FEE
      app.route('/edit/fee')
      .post(
-feeController.editUser
+feeController.editFee
      );
 
 
@@ -61,20 +64,35 @@ feeController.editUser
     //show all users
     app.route('/find/all/auth')
     .get(
-        authController.find
+        authController.findAuth
     );
   
   //add a new users
     app.route('/new/auth')
        .post(
         authController.makeToken,
-        authController.addUser
+        authController.addAuth
        );
   
   //update users
        app.route('/edit/auth')
        .post(
-        authController.editUser
+        authController.editAuth
        );
   
-    }
+   
+    ////////Terms Model////////
+    //show all Terms
+    app.route('/find/all/term')
+    .get(
+       registerController.findTerm
+    );
+  
+  //add a new Term
+    app.route('/new/term')
+       .post(
+        registerController.addTerm
+       );
+ 
+  
+    } 

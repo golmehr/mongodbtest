@@ -1,12 +1,14 @@
 const mongoose=require('mongoose');
-const Fee=require('./feeModel');
+//const Fee=require('./feeModel');
+const auth=require('./authModel');
+const regist=require('./registerModel');
 const Schema=mongoose.Schema;
-ObjectId = Schema.Types.ObjectId;
+//ObjectId = Schema.Types.ObjectId;
 
 
 //Student Model
 const studentSchema=new Schema({
-    authuser:{
+    auth:{
         type:Schema.Types.ObjectId,
         ref:'auth'
         },
@@ -51,37 +53,9 @@ const studentSchema=new Schema({
         default: Date.now()
     },
     //Registration Info
-    register:[{
-           //which Term ? 97-1,97-2,...
-        term:{
-            type:String,
-            required: true
-            },
-         //which class ?Basic1,Basic2,...
-        class:{
-            type:String,
-            required:true
-             },
-            //payment Info
-            
-        FEE:{
-            type:Schema.Types.ObjectId,
-            ref:'FEE'
-            },
-             //yes/NO
-        paid:{
-            type:String,
-            required: true
-            },
-             //yes/NO
-        book_buy:{
-            type:String,
-            required: true
-            },
-        score:{type:Number}
+    register:[{ type:Schema.Types.ObjectId,
+        ref:'register'}] 
     
-             }]
-         
 });
 
 //studentSchema.index({ "id_number": 1 },{ "unique": true, "background": false });

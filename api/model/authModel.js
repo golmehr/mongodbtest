@@ -28,5 +28,5 @@ const authSchema=new Schema({
 
 module.exports=mongoose.model('auth',authSchema);
 
-const auth=mongoose.model('auth',authSchema);
+//const auth=mongoose.model('auth',authSchema);
 

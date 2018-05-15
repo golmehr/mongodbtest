@@ -1,7 +1,6 @@
 const User=require('../model/userModel');
-const Fee=require('../model/feeModel');
-
-
+const auth=require('../model/authModel');
+const register=require('../model/registerModel');
 
 //show all students(select *)
 exports.find= async (req,res)=>{
@@ -9,38 +8,36 @@ const user=await User.find({});
 res.json(user);
 }
 
-
 //add a new Student(insert)
 exports.addUser=(req,res)=>{
-   new User({
-        name:req.body.name,
-        lname:req.body.lname,
-        id_number:req.body.id_number,
-        birth:req.body.birth,
-        address:req.body.address,
-        tel:req.body.tel,        
-        password: req.body.password,
-        email:req.body.email,
-        register:[{
-            term: req.body.term,
-            class: req.body.class,
+    console.log(req.body);
+    auth.findById(req.body._id,(error,user_auth) => {
+        if(error) throw error;
+        register.findById(req.body._id,(err,fee)=>{
+    if(err) throw err;
+new User({
+             auth:user_auth_id,
+             name:req.body.name,
+             lname:req.body.lname,
+             id_number:req.body.id_number,
+             birth:req.body.birth,
+             address:req.body.address,
+            tel:req.body.tel,        
+            password: req.body.password,
+            email:req.body.email,
+             register:register._id
+                 }).save((err)=>{
+                     if(err) throw err;
+                     res.json({
+                         status:'success',
+                         message:'you have successfully signed up!'
+                     })
+                 })
+                })})
+            }
+         
+                   
 
-            //////////
-            FEE:req.body._id ,
-            
-            //////////
-            paid: req.body.paid,
-            book_buy: req.body.book_buy,
-            score: req.body.score
-        }]
-            }).save((err)=>{
-                if(err) throw err;
-                res.json({
-                    status:'success',
-                    message:'you have successfully signed up!'
-                })
-            })
-  }
 
 
 // search for  a student * when user has forgotten her password and send her email 
