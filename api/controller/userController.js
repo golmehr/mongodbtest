@@ -7,7 +7,6 @@ exports.find= async (req,res)=>{
 const user=await User.find({});
 res.json(user);
 }
-
 //add a new Student(insert)
 exports.addUser=(req,res)=>{
     console.log(req.body);
