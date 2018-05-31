@@ -1,12 +1,12 @@
-const express= require('express');
-const mongoose= require('mongoose');
-const bodyParser= require('body-parser');
-const app=express();
-const Routes=require('./api/routes');
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const app = express();
+const Routes = require('./api/routes');
 //connect
-mongoose.connect
-('mongodb://admin:admin@ds241869.mlab.com:41869/test-db');
-  
+// mongoose.connect
+// ('mongodb://admin:admin@ds241869.mlab.com:41869/test-db');
+  require('./connection');
 
 //parsers
 
