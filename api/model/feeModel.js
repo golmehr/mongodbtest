@@ -1,12 +1,8 @@
 const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 
-
-
-
-
 //FEE Model
-const feeSchema=new Schema({
+const feeSchema = new Schema({
     //Private,SemiPrivate,General,Children,...
     feeType : {
         type:String,
@@ -15,12 +11,12 @@ const feeSchema=new Schema({
     },
     feeToman: {
         type:Number,
-        required: true
+        required: true,
+        min:0
 
     }
 });
 
 module.exports = mongoose.model('FEE',feeSchema);
 
-//const FEE = mongoose.model('FEE',feeSchema);
 

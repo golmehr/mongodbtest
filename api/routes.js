@@ -5,7 +5,13 @@ const registerController=require('./controller/registerController');
 
 
 
-module.exports=(app)=>{
+module.exports = (app)=>{
+  app.route('/')
+  .get(
+      (req,res)=>{res.send('Hello World!');}
+  );
+
+
 
   //show all db(select *)
     app.route('/find/all/users')
